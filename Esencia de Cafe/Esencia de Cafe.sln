@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.Esencia de Cafe", "Win.Esencia de Cafe\Win.Esencia de Cafe.csproj", "{40D12867-72DC-4A62-884A-40549CBB4347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL.Esencia de cafe", "BL.Esencia de cafe\BL.Esencia de cafe.csproj", "{E70D52D6-B3E3-4DB1-AD11-989B3BF1B84F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40D12867-72DC-4A62-884A-40549CBB4347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D12867-72DC-4A62-884A-40549CBB4347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D12867-72DC-4A62-884A-40549CBB4347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D12867-72DC-4A62-884A-40549CBB4347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E70D52D6-B3E3-4DB1-AD11-989B3BF1B84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70D52D6-B3E3-4DB1-AD11-989B3BF1B84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70D52D6-B3E3-4DB1-AD11-989B3BF1B84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70D52D6-B3E3-4DB1-AD11-989B3BF1B84F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
