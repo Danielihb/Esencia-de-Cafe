@@ -48,5 +48,10 @@ namespace Win.Esencia_de_Cafe
 
             }
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }
