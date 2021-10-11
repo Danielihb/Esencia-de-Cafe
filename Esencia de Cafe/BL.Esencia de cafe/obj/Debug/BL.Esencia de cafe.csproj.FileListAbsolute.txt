@@ -1,0 +1,5 @@
+C:\Users\Los Crack\Desktop\lenguaje 3 clase\Esencia de Cafe\Esencia de Cafe\BL.Esencia de cafe\bin\Debug\BL.Esencia de cafe.dll
+C:\Users\Los Crack\Desktop\lenguaje 3 clase\Esencia de Cafe\Esencia de Cafe\BL.Esencia de cafe\bin\Debug\BL.Esencia de cafe.pdb
+C:\Users\Los Crack\Desktop\lenguaje 3 clase\Esencia de Cafe\Esencia de Cafe\BL.Esencia de cafe\obj\Debug\BL.Esencia de cafe.csprojResolveAssemblyReference.cache
+C:\Users\Los Crack\Desktop\lenguaje 3 clase\Esencia de Cafe\Esencia de Cafe\BL.Esencia de cafe\obj\Debug\BL.Esencia de cafe.dll
+C:\Users\Los Crack\Desktop\lenguaje 3 clase\Esencia de Cafe\Esencia de Cafe\BL.Esencia de cafe\obj\Debug\BL.Esencia de cafe.pdb
