@@ -53,5 +53,10 @@ namespace Win.Esencia_de_Cafe
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -47,6 +47,7 @@
             this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuario";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 

@@ -82,21 +82,30 @@ namespace BL.Esencia_de_cafe
         {
             return ListaProductos;
         }
-        public bool guardarProducto(Producto producto)
+        public Resultado guardarProducto(Producto producto) //guardar producto
         {
+            var resultado = Validar(producto);
+            if(resultado.Exitoso == false)
+            {
+                return resultado;
+            }
+
             if (producto.id == 0)
             {
                 producto.id = ListaProductos.Max(item => item.id) + 1;
 
             }
-            return true;
+            resultado.Exitoso = true;
+            return resultado;
         }
-        public void agregarProductos()
+
+        public void agregarProductos() //agregar un nuevo producto.
         {
             var nuevoProducto = new Producto();
             ListaProductos.Add(nuevoProducto);
         }
-        public bool EliminarProducto(int id)
+
+        public bool EliminarProducto(int id) //Eliminar Producto.
         {
             foreach (var producto in ListaProductos)
             {
@@ -108,6 +117,31 @@ namespace BL.Esencia_de_cafe
             }
             return false;
         }
+
+        private Resultado Validar(Producto producto) //Validaciones
+        {
+            var resultado = new Resultado();
+            resultado.Exitoso = true;
+
+            if(string.IsNullOrEmpty(producto.Descripcion) == true)
+            {
+                resultado.Mensaje = "Ingrese una descripcion";
+                resultado.Exitoso = false;
+            }
+
+            if (string.IsNullOrEmpty(producto.Categorias) == true)
+            {
+                resultado.Mensaje = "Ingrese una Categoria";
+                resultado.Exitoso = false;
+            }
+
+            if (producto.Precio <= 0 )
+            {
+                resultado.Mensaje = "El precio debe ser mayor que Cero (0)";
+                resultado.Exitoso = false;
+            }
+            return resultado;
+        }
     }
     public class Producto
     {
@@ -116,6 +150,11 @@ namespace BL.Esencia_de_cafe
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public bool Activo { get; set; }
+    }
+    public class Resultado
+    {
+        public bool Exitoso { get; set; }
+        public string Mensaje { get; set; }
     }
 }
 

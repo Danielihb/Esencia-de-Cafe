@@ -29,46 +29,73 @@ namespace Win.Esencia_de_Cafe
 
         }
 
-        private void productoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void productoBindingNavigatorSaveItem_Click(object sender, EventArgs e) //Guardar producto
         {
             productoBindingSource.EndEdit();
             var producto = (Producto)productoBindingSource.Current;
 
             var Resultado = _productos.guardarProducto(producto);
 
-            if (Resultado == true)
+            if (Resultado.Exitoso == true)
             {
                 productoBindingSource.ResetBindings(false);
+                DesabilitarHabilitarBonotes(true);
             }
             else
             {
-                MessageBox.Show("Error al guardar Producto");
+                MessageBox.Show(Resultado.Mensaje);
             }
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e) //Agregar Producto
         {
             _productos.agregarProductos();
             productoBindingSource.MoveLast();
 
+            DesabilitarHabilitarBonotes(false);
+
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        private void DesabilitarHabilitarBonotes(bool valor) //Desabilitar botones mientras un producto esta ingresando un producto.
+        {
+            bindingNavigatorMoveFirstItem.Enabled = valor;
+            bindingNavigatorMoveLastItem.Enabled = valor;
+            bindingNavigatorMovePreviousItem.Enabled = valor;
+            bindingNavigatorMoveNextItem.Enabled = valor;
+            bindingNavigatorPositionItem.Enabled = valor;
+
+            bindingNavigatorAddNewItem.Enabled = valor;
+            bindingNavigatorDeleteItem.Enabled = valor;
+            toolStripButton1.Visible =! valor;
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e) //Eliminar Producto
         {
             if (idTextBox.Text != "")
             {
-                var id = Convert.ToInt32(idTextBox.Text);
-                var Resultado = _productos.EliminarProducto(id);
-
-                if (Resultado == true)
+                var resultado = MessageBox.Show("¿Desea Eliminar este este Producto?", "Eliminar", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
                 {
-                    productoBindingSource.ResetBindings(false);
+                    var id = Convert.ToInt32(idTextBox.Text);
+                    Eliminar(id);   
+                }
+                    
+            }
+        }
 
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrio un Problema al eliminar un Producto");
-                }
+        private void Eliminar(int id)
+        {
+            
+            var Resultado = _productos.EliminarProducto(id);
+
+            if (Resultado == true)
+            {
+                productoBindingSource.ResetBindings(false);
+
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un Problema al eliminar un Producto");
             }
         }
 
@@ -77,6 +104,15 @@ namespace Win.Esencia_de_Cafe
 
         }
 
-       
+        private void toolStripButton1_Click(object sender, EventArgs e) //Boton Cancelar
+        {
+            DesabilitarHabilitarBonotes(true);
+            Eliminar(0);
+        }
+
+        private void productoBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

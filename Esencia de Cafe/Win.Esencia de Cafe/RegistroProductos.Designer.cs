@@ -145,6 +145,7 @@
             this.productoBindingNavigator.Size = new System.Drawing.Size(401, 25);
             this.productoBindingNavigator.TabIndex = 0;
             this.productoBindingNavigator.Text = "bindingNavigator1";
+            this.productoBindingNavigator.RefreshItems += new System.EventHandler(this.productoBindingNavigator_RefreshItems);
             // 
             // bindingNavigatorCountItem
             // 
@@ -251,6 +252,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
             this.toolStripButton1.Text = "Cancelar";
             this.toolStripButton1.Visible = false;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // activoCheckBox
             // 
