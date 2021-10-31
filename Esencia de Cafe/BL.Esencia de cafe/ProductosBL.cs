@@ -12,6 +12,7 @@ namespace BL.Esencia_de_cafe
     {
         contexto _contexto;
         public BindingList<Producto> ListaProductos { get; set; }
+
         public ProductosBL()
         {
             _contexto = new contexto();
@@ -23,17 +24,19 @@ namespace BL.Esencia_de_cafe
         {
             _contexto.Productos.Load();
             ListaProductos = _contexto.Productos.Local.ToBindingList();
+
             return ListaProductos;
         }
         public Resultado guardarProducto(Producto producto) //guardar producto
         {
             var resultado = Validar(producto);
-            if(resultado.Exitoso == false)
+            if (resultado.Exitoso == false)
             {
                 return resultado;
             }
 
             _contexto.SaveChanges();
+
             resultado.Exitoso = true;
             return resultado;
         }
@@ -63,38 +66,45 @@ namespace BL.Esencia_de_cafe
             var resultado = new Resultado();
             resultado.Exitoso = true;
 
-            if(string.IsNullOrEmpty(producto.Descripcion) == true)
+            if (string.IsNullOrEmpty(producto.Descripcion) == true)
             {
                 resultado.Mensaje = "Ingrese una descripcion";
                 resultado.Exitoso = false;
             }
 
-            if (string.IsNullOrEmpty(producto.Categorias) == true)
-            {
-                resultado.Mensaje = "Ingrese una Categoria";
-                resultado.Exitoso = false;
-            }
+            /* if (string.IsNullOrEmpty(producto.Categorias) == true)
+             {
+                 resultado.Mensaje = "Ingrese una Categoria";
+                 resultado.Exitoso = false;
+             }*/
 
-            if (producto.Precio <= 0 )
-            {
-                resultado.Mensaje = "El precio debe ser mayor que Cero (0)";
-                resultado.Exitoso = false;
-            }
-            return resultado;
-        }
-    }
-    public class Producto
-    {
-        public int id { get; set; }
-        public string Categorias { get; set; }
-        public string Descripcion { get; set; }
-        public double Precio { get; set; }
-        public bool Activo { get; set; }
-    }
-    public class Resultado
-    {
-        public bool Exitoso { get; set; }
-        public string Mensaje { get; set; }
-    }
-}
+             if (producto.Precio <= 0)
+             {
+                 resultado.Mensaje = "El precio debe ser mayor que Cero (0)";
+                 resultado.Exitoso = false;
+             }
+             return resultado;
+         }
+     }
+     public class Producto
+     {
+         public int id { get; set; }
+         public int CategoriaId { get; set; }
+         public Categoria Categoria { get; set; }
+         public string Descripcion { get; set; }
+         public double Precio { get; set; }
+         public byte[] Foto { get; set; }
+         public bool Activo { get; set; }
+
+         public Producto()
+         {
+             Activo = true;
+         }
+     }
+     public class Resultado
+     {
+         public bool Exitoso { get; set; }
+         public string Mensaje { get; set; }
+     }
+ }
 

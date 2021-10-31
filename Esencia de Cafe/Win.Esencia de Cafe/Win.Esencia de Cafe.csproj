@@ -135,6 +135,7 @@
       <DependentUpon>ReporteProductos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BL.Esencia_de_cafe.CategoriaBL.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.producto.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.ProductosBL.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.SeguridadBL.datasource" />

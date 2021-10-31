@@ -8,21 +8,32 @@ namespace BL.Esencia_de_cafe
 {
     public class SeguridadBL
     {
+        contexto _contexto;
+
+        public SeguridadBL()
+        {
+            _contexto = new contexto();
+        }
         public bool Autorizar(String usuario, String contrasena)
         {
-            if (usuario == "admin1" && contrasena == "1234")
+            var usuarios = _contexto.Usuarios.ToList();
+
+            foreach (var usuarioDB in usuarios)
             {
-                return true;
-            }
-            else
-            {
-                if (usuario == "admin2" && contrasena == "123456")
+                if (usuario == usuarioDB.Nombre && contrasena == usuarioDB.Contrasena)
                 {
                     return true;
-
                 }
             }
+
             return false;
         }
+    }
+
+    public class usuario
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Contrasena { get; set; }
     }
 }
