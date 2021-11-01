@@ -1,5 +1,4 @@
-﻿using BL.Esencia_de_cafe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -18,7 +17,7 @@ namespace BL.Esencia_de_cafe
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            Database.SetInitializer(new Datosdeinicio());
+            Database.SetInitializer(new DatosdeInicio()); 
         }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }

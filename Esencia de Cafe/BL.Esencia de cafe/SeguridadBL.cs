@@ -14,7 +14,8 @@ namespace BL.Esencia_de_cafe
         {
             _contexto = new contexto();
         }
-        public bool Autorizar(String usuario, String contrasena)
+
+        public bool Autorizar(string usuario, string contrasena)
         {
             var usuarios = _contexto.Usuarios.ToList();
 
@@ -30,7 +31,7 @@ namespace BL.Esencia_de_cafe
         }
     }
 
-    public class usuario
+    public class Usuario
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

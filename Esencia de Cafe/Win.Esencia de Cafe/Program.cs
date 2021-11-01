@@ -20,7 +20,6 @@ namespace Win.Esencia_de_Cafe
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMenu());
         }
-
         public static byte[] imageToByteArray(Image imageIn)
         {
             var ms = new MemoryStream();
@@ -28,6 +27,5 @@ namespace Win.Esencia_de_Cafe
 
             return ms.ToArray();
         }
-        }
     }
-
+}

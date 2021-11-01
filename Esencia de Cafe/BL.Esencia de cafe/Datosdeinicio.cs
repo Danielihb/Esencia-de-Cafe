@@ -7,29 +7,36 @@ using System.Threading.Tasks;
 
 namespace BL.Esencia_de_cafe
 {
-    public class Datosdeinicio : CreateDatabaseIfNotExists<contexto>
+    public class DatosdeInicio : CreateDatabaseIfNotExists<contexto>
     {
-        protected override void Seed(contexto Contexto)
+        protected override void Seed(contexto _contexto)
         {
-            var usuarioadmin = new Usuario();
-            usuarioadmin.Nombre = "admin1";
-            usuarioadmin.Contrasena = "1234";
 
-            Contexto.Usuarios.Add(usuarioadmin);
+            var usuario1 = new Usuario();
+            usuario1.Nombre = "admin1";
+            usuario1.Contrasena = "1234";
 
-            var usuarioadmin1 = new Usuario();
-            usuarioadmin1.Nombre = "admin2";
-            usuarioadmin1.Contrasena = "123456";
+            _contexto.Usuarios.Add(usuario1);
 
-            Contexto.Usuarios.Add(usuarioadmin1);
+            var usuario2 = new Usuario();
+            usuario2.Nombre = "admin2";
+            usuario2.Contrasena = "123456";
 
+            _contexto.Usuarios.Add(usuario2);
 
             var categoria1 = new Categoria();
-            categoria1.Descripcion = "Bibidas";
-            Contexto.Categorias.Add(categoria1);
+            categoria1.Descripcion = "Bebidas Calientes";
+            _contexto.Categorias.Add(categoria1);
 
-            base.Seed(Contexto);
+            var categoria2 = new Categoria();
+            categoria2.Descripcion = "Bebidas Heladas";
+            _contexto.Categorias.Add(categoria2);
+
+            var categoria3 = new Categoria();
+            categoria3.Descripcion = "Acompañante";
+            _contexto.Categorias.Add(categoria3);
+
+            base.Seed(_contexto);
         }
     }
-    }
-
+}

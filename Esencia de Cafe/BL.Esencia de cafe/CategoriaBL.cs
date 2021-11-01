@@ -10,23 +10,20 @@ namespace BL.Esencia_de_cafe
 {
     public class CategoriaBL
     {
-        contexto _contexto;
+        contexto _Contexto;
 
         public BindingList<Categoria> ListaCategorias { get; set; }
 
         public CategoriaBL()
         {
-
-            _contexto = new contexto();
-                ListaCategorias = new BindingList<Categoria>();
+            _Contexto = new contexto();
+            ListaCategorias = new BindingList<Categoria>();
         }
 
         public BindingList<Categoria> ObtenerCategorias()
         {
-
-            _contexto.Categorias.Load();
-            ListaCategorias = _contexto.Categorias.Local.ToBindingList();
-
+            _Contexto.Categorias.Load();
+            ListaCategorias = _Contexto.Categorias.Local.ToBindingList();
 
             return ListaCategorias;
         }

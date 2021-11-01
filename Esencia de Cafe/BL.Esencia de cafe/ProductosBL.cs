@@ -10,33 +10,39 @@ namespace BL.Esencia_de_cafe
 {
     public class ProductosBL
     {
-        contexto _contexto;
+        contexto _Contexto;
         public BindingList<Producto> ListaProductos { get; set; }
-
         public ProductosBL()
         {
-            _contexto = new contexto();
+            _Contexto = new contexto();
             ListaProductos = new BindingList<Producto>();
 
         }
 
         public BindingList<Producto> ObtenerProductos()
         {
-            _contexto.Productos.Load();
-            ListaProductos = _contexto.Productos.Local.ToBindingList();
-
+            _Contexto.Productos.Load();
+            ListaProductos = _Contexto.Productos.Local.ToBindingList();
             return ListaProductos;
+        }
+
+        public void CancelarCambios()
+        {
+            foreach (var item in _Contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
         }
         public Resultado guardarProducto(Producto producto) //guardar producto
         {
             var resultado = Validar(producto);
-            if (resultado.Exitoso == false)
+            if(resultado.Exitoso == false)
             {
                 return resultado;
             }
 
-            _contexto.SaveChanges();
-
+            _Contexto.SaveChanges();
             resultado.Exitoso = true;
             return resultado;
         }
@@ -54,7 +60,7 @@ namespace BL.Esencia_de_cafe
                 if (producto.id == id)
                 {
                     ListaProductos.Remove(producto);
-                    _contexto.SaveChanges();
+                    _Contexto.SaveChanges();
                     return true;
                 }
             }
@@ -66,45 +72,39 @@ namespace BL.Esencia_de_cafe
             var resultado = new Resultado();
             resultado.Exitoso = true;
 
-            if (string.IsNullOrEmpty(producto.Descripcion) == true)
+            if(string.IsNullOrEmpty(producto.Descripcion) == true)
             {
                 resultado.Mensaje = "Ingrese una descripcion";
                 resultado.Exitoso = false;
             }
 
-            /* if (string.IsNullOrEmpty(producto.Categorias) == true)
-             {
-                 resultado.Mensaje = "Ingrese una Categoria";
-                 resultado.Exitoso = false;
-             }*/
-
-             if (producto.Precio <= 0)
-             {
-                 resultado.Mensaje = "El precio debe ser mayor que Cero (0)";
-                 resultado.Exitoso = false;
-             }
-             return resultado;
-         }
-     }
-     public class Producto
-     {
-         public int id { get; set; }
-         public int CategoriaId { get; set; }
-         public Categoria Categoria { get; set; }
-         public string Descripcion { get; set; }
-         public double Precio { get; set; }
-         public byte[] Foto { get; set; }
-         public bool Activo { get; set; }
-
-         public Producto()
-         {
-             Activo = true;
-         }
-     }
-     public class Resultado
-     {
-         public bool Exitoso { get; set; }
-         public string Mensaje { get; set; }
-     }
- }
+            if (producto.Categoriaid == 0)
+            {
+                resultado.Mensaje = "Seleccione una categoria";
+                resultado.Exitoso = false;
+            }
+            if (producto.Precio <= 0 )
+            {
+                resultado.Mensaje = "El precio debe ser mayor que Cero (0)";
+                resultado.Exitoso = false;
+            }
+            return resultado;
+        }
+    }
+    public class Producto
+    {
+        public int id { get; set; }
+        public Categoria Categoria { get; set; }
+        public int Categoriaid { get; set; }
+        public string Descripcion { get; set; }
+        public double Precio { get; set; }
+        public byte[] Foto { get; set; }
+        public bool Activo { get; set; }
+    }
+    public class Resultado
+    {
+        public bool Exitoso { get; set; }
+        public string Mensaje { get; set; }
+    }
+}
 

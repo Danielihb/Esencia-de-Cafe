@@ -26,7 +26,7 @@ namespace Win.Esencia_de_Cafe
             productoBindingSource.DataSource = _productos.ObtenerProductos();
 
             _categorias = new CategoriaBL();
-            productoBindingSource.DataSource = _categorias.ObtenerCategorias();
+            listaCategoriasBindingSource.DataSource = _categorias.ObtenerCategorias();
         }
 
         private void RegistroProductos_Load(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace Win.Esencia_de_Cafe
 
             bindingNavigatorAddNewItem.Enabled = valor;
             bindingNavigatorDeleteItem.Enabled = valor;
-            toolStripButton1.Visible =! valor;
+            toolStripButton1.Visible = !valor;
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e) //Eliminar Producto
@@ -92,15 +92,15 @@ namespace Win.Esencia_de_Cafe
                 if (resultado == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(idTextBox.Text);
-                    Eliminar(id);   
+                    Eliminar(id);
                 }
-                    
+
             }
         }
 
         private void Eliminar(int id)
         {
-            
+
             var Resultado = _productos.EliminarProducto(id);
 
             if (Resultado == true)
@@ -121,21 +121,12 @@ namespace Win.Esencia_de_Cafe
 
         private void toolStripButton1_Click(object sender, EventArgs e) //Boton Cancelar
         {
+            _productos.CancelarCambios();
             DesabilitarHabilitarBonotes(true);
-            Eliminar(0);
-        }
-
-        private void productoBindingNavigator_RefreshItems(object sender, EventArgs e)
-        {
             
         }
 
-        private void fotoLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fotoPictureBox_Click(object sender, EventArgs e)
+        private void productoBindingNavigator_RefreshItems(object sender, EventArgs e)
         {
 
         }
@@ -144,35 +135,33 @@ namespace Win.Esencia_de_Cafe
         {
             var producto = (Producto)productoBindingSource.Current;
 
-            if(producto != null)
+            if (producto != null)
             {
+                openFileDialog1.FileName = "";
                 openFileDialog1.ShowDialog();
+
                 var archivo = openFileDialog1.FileName;
 
                 if (archivo != "")
                 {
-
                     var fileInfo = new FileInfo(archivo);
                     var fileStream = fileInfo.OpenRead();
+
+
 
                     fotoPictureBox.Image = Image.FromStream(fileStream);
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese un Producto antes de Agregar una Imagen");
+                MessageBox.Show("Crear un producto antes de ingresar una imagen");
             }
-           
+        
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             fotoPictureBox.Image = null;
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
         }
     }
 }
