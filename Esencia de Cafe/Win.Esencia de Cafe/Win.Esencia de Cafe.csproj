@@ -136,6 +136,8 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.CategoriaBL.datasource" />
+    <None Include="Properties\DataSources\BL.Esencia_de_cafe.ClientesBL.datasource" />
+    <None Include="Properties\DataSources\BL.Esencia_de_cafe.FacturaBL.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.producto.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.ProductosBL.datasource" />
     <None Include="Properties\DataSources\BL.Esencia_de_cafe.SeguridadBL.datasource" />

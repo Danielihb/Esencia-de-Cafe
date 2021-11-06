@@ -36,6 +36,18 @@ namespace BL.Esencia_de_cafe
             categoria3.Descripcion = "Acompañante";
             _contexto.Categorias.Add(categoria3);
 
+            var cliente1 = new Cliente();
+            cliente1.Nombre = "Daniel Hernandez";
+            cliente1.Direccion = "Choloma";
+            cliente1.DNI = "0502199402416";
+            _contexto.Clientes.Add(cliente1);
+
+            var cliente2 = new Cliente();
+            cliente2.Nombre = "Omar Menjivar";
+            cliente2.Direccion = "Choloma";
+            cliente2.DNI = "0502199002611";
+            _contexto.Clientes.Add(cliente2);
+
             base.Seed(_contexto);
         }
     }

@@ -36,9 +36,10 @@ namespace Win.Esencia_de_Cafe
 
         private void productoBindingNavigatorSaveItem_Click(object sender, EventArgs e) //Guardar producto
         {
+            
             productoBindingSource.EndEdit();
             var producto = (Producto)productoBindingSource.Current;
-
+           
             if (fotoPictureBox.Image != null)
             {
                 producto.Foto = Program.imageToByteArray(fotoPictureBox.Image);
@@ -53,7 +54,7 @@ namespace Win.Esencia_de_Cafe
             if (Resultado.Exitoso == true)
             {
                 productoBindingSource.ResetBindings(false);
-                DesabilitarHabilitarBonotes(true);
+                DesabilitarHabilitarBotones(true);
                 MessageBox.Show("Producto Guardado ");
             }
             else
@@ -66,12 +67,11 @@ namespace Win.Esencia_de_Cafe
         {
             _productos.agregarProductos();
             productoBindingSource.MoveLast();
-
-            DesabilitarHabilitarBonotes(false);
+            DesabilitarHabilitarBotones(false);
 
         }
 
-        private void DesabilitarHabilitarBonotes(bool valor) //Desabilitar botones mientras un producto esta ingresando un producto.
+        private void DesabilitarHabilitarBotones(bool valor) //Desabilitar botones mientras un producto esta ingresando un producto.
         {
             bindingNavigatorMoveFirstItem.Enabled = valor;
             bindingNavigatorMoveLastItem.Enabled = valor;
@@ -122,7 +122,7 @@ namespace Win.Esencia_de_Cafe
         private void toolStripButton1_Click(object sender, EventArgs e) //Boton Cancelar
         {
             _productos.CancelarCambios();
-            DesabilitarHabilitarBonotes(true);
+            DesabilitarHabilitarBotones(true);
             
         }
 
@@ -162,6 +162,26 @@ namespace Win.Esencia_de_Cafe
         private void button2_Click(object sender, EventArgs e)
         {
             fotoPictureBox.Image = null;
+        }
+
+        private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void fotoPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void categoriaidComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

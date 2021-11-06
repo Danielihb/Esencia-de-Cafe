@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Win.Esencia_de_Cafe;
 
 namespace Win.Esencia_de_Cafe
 {
@@ -65,7 +66,7 @@ namespace Win.Esencia_de_Cafe
 
         private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var FormFacturas = new FormFacturas();
+            var FormFacturas = new FormFactura();
             FormFacturas.MdiParent = this;
             FormFacturas.Show();
 

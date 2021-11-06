@@ -33,9 +33,10 @@
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label precioLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroProductos));
             System.Windows.Forms.Label categoriaidLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroProductos));
             this.productoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -58,10 +59,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoriaBLBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listaCategoriasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoriaidComboBox = new System.Windows.Forms.ComboBox();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             activoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
@@ -69,8 +70,8 @@
             categoriaidLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingNavigator)).BeginInit();
             this.productoBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBLBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +112,15 @@
             precioLabel.TabIndex = 9;
             precioLabel.Text = "Precio:";
             // 
+            // categoriaidLabel
+            // 
+            categoriaidLabel.AutoSize = true;
+            categoriaidLabel.Location = new System.Drawing.Point(93, 74);
+            categoriaidLabel.Name = "categoriaidLabel";
+            categoriaidLabel.Size = new System.Drawing.Size(55, 13);
+            categoriaidLabel.TabIndex = 15;
+            categoriaidLabel.Text = "Categoria:";
+            // 
             // productoBindingNavigator
             // 
             this.productoBindingNavigator.AddNewItem = null;
@@ -142,6 +152,10 @@
             this.productoBindingNavigator.TabIndex = 0;
             this.productoBindingNavigator.Text = "bindingNavigator1";
             this.productoBindingNavigator.RefreshItems += new System.EventHandler(this.productoBindingNavigator_RefreshItems);
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(BL.Esencia_de_cafe.Producto);
             // 
             // bindingNavigatorCountItem
             // 
@@ -287,7 +301,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(275, 134);
+            this.label1.Location = new System.Drawing.Point(275, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 11;
@@ -303,6 +317,7 @@
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fotoPictureBox.TabIndex = 13;
             this.fotoPictureBox.TabStop = false;
+            this.fotoPictureBox.Click += new System.EventHandler(this.fotoPictureBox_Click);
             // 
             // button1
             // 
@@ -327,10 +342,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "JPG, PNG | *jpg; *png";
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(BL.Esencia_de_cafe.Producto);
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // categoriaBLBindingSource
             // 
@@ -340,15 +352,6 @@
             // 
             this.listaCategoriasBindingSource.DataMember = "ListaCategorias";
             this.listaCategoriasBindingSource.DataSource = this.categoriaBLBindingSource;
-            // 
-            // categoriaidLabel
-            // 
-            categoriaidLabel.AutoSize = true;
-            categoriaidLabel.Location = new System.Drawing.Point(93, 74);
-            categoriaidLabel.Name = "categoriaidLabel";
-            categoriaidLabel.Size = new System.Drawing.Size(55, 13);
-            categoriaidLabel.TabIndex = 15;
-            categoriaidLabel.Text = "Categoria:";
             // 
             // categoriaidComboBox
             // 
@@ -362,6 +365,12 @@
             this.categoriaidComboBox.Size = new System.Drawing.Size(104, 21);
             this.categoriaidComboBox.TabIndex = 16;
             this.categoriaidComboBox.ValueMember = "Id";
+            this.categoriaidComboBox.SelectedIndexChanged += new System.EventHandler(this.categoriaidComboBox_SelectedIndexChanged);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
             // RegistroProductos
             // 
@@ -394,8 +403,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingNavigator)).EndInit();
             this.productoBindingNavigator.ResumeLayout(false);
             this.productoBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBLBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -432,5 +441,6 @@
         private System.Windows.Forms.BindingSource categoriaBLBindingSource;
         private System.Windows.Forms.BindingSource listaCategoriasBindingSource;
         private System.Windows.Forms.ComboBox categoriaidComboBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
