@@ -58,7 +58,7 @@ namespace Win.Esencia_de_Cafe
 
         private void reportesDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ReporteProductos = new ReporteProductos();
+            var ReporteProductos = new FormReportesProducto();
             ReporteProductos.MdiParent = this;
             ReporteProductos.Show();
 
@@ -86,6 +86,13 @@ namespace Win.Esencia_de_Cafe
         private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void reportesDeFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FormReporteFacturas = new FormReporteFacturas();
+            FormReporteFacturas.MdiParent = this;
+            FormReporteFacturas.Show();
         }
     }
 }

@@ -11,29 +11,29 @@ using System.Windows.Forms;
 
 namespace Win.Esencia_de_Cafe
 {
-    public partial class FormReportesProducto : Form
+    public partial class FormReporteFacturas : Form
     {
-        public FormReportesProducto()
+        public FormReporteFacturas()
         {
             InitializeComponent();
-
-            var _productoBL = new ProductosBL();
-            var bidingSource = new BindingSource();
-            bidingSource.DataSource = _productoBL.ObtenerProductos();
-
-            var reporte = new DetalledeReportesProductos();
-            reporte.SetDataSource(bidingSource);
-
-            crystalReportViewer1.ReportSource = reporte;
-            crystalReportViewer1.RefreshReport();
         }
 
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
+            var _facturaBL = new FacturaBL();
+            var bidingSource = new BindingSource();
+            bidingSource.DataSource = _facturaBL.ObtenerFacturas();
+
+            var reporte = new DetalledeReportesFacturas();
+            reporte.SetDataSource(bidingSource);
+
+            crystalReportViewer1.ReportSource = reporte;
+            crystalReportViewer1.RefreshReport();
+
 
         }
 
-        private void FormReportesFacturas_Load(object sender, EventArgs e)
+        private void FormReporteFacturas_Load(object sender, EventArgs e)
         {
 
         }
