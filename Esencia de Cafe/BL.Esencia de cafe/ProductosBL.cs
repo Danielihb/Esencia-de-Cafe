@@ -19,6 +19,14 @@ namespace BL.Esencia_de_cafe
 
         }
 
+        public BindingList<Producto> ObtenerProductos(string buscar)
+        {
+
+            var resultado = _Contexto.Productos.Where(p => p.Descripcion.ToLower().Contains(buscar.ToLower()));
+
+            return new BindingList<Producto>(resultado.ToList());
+        }
+
         public BindingList<Producto> ObtenerProductos()
         {
             _Contexto.Productos.Load();

@@ -183,5 +183,24 @@ namespace Win.Esencia_de_Cafe
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string buscar = textBox1.Text;
+           
+            if (buscar=="")
+            {
+                productoBindingSource.DataSource = _productos.ObtenerProductos();
+            }
+            else
+            {
+                productoBindingSource.DataSource = _productos.ObtenerProductos(buscar);
+            } 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

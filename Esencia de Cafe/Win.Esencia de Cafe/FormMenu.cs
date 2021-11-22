@@ -30,6 +30,8 @@ namespace Win.Esencia_de_Cafe
         {
             var FormLogin = new FormLogin();
             FormLogin.ShowDialog();
+
+            toolStripStatusLabel1.Text = "Usuario: "+ Utilidades.nombreusuario;
         }
 
         private void registroDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,6 +95,11 @@ namespace Win.Esencia_de_Cafe
             var FormReporteFacturas = new FormReporteFacturas();
             FormReporteFacturas.MdiParent = this;
             FormReporteFacturas.Show();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

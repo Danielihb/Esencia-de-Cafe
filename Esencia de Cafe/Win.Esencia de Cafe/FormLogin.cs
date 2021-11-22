@@ -28,6 +28,11 @@ namespace Win.Esencia_de_Cafe
 
         private void button1_Click(object sender, EventArgs e)
         {
+            login();
+        }
+        private void login()
+        {
+
             String usuario;
             String contrasena;
 
@@ -40,9 +45,11 @@ namespace Win.Esencia_de_Cafe
 
             var resultado = _seguridad.Autorizar(usuario, contrasena);
 
-            if (resultado == true)
+            if (resultado != null)
             {
+                Utilidades.nombreusuario = resultado.Nombre;
                 this.Close();
+               
             }
             else
             {
@@ -59,6 +66,43 @@ namespace Win.Esencia_de_Cafe
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+     
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && textBox1.Text != "" )
+            {
+                textBox2.Focus();
+
+            }
+        }
+
+        private void textBox2_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && textBox1.Text != "" && textBox2.Text != "")
+            {
+                login();
+            }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
         {
 
         }

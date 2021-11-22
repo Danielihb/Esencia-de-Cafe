@@ -63,6 +63,8 @@
             this.listaCategoriasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoriaidComboBox = new System.Windows.Forms.ComboBox();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
@@ -148,7 +150,7 @@
             this.productoBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.productoBindingNavigator.Name = "productoBindingNavigator";
             this.productoBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.productoBindingNavigator.Size = new System.Drawing.Size(568, 25);
+            this.productoBindingNavigator.Size = new System.Drawing.Size(634, 25);
             this.productoBindingNavigator.TabIndex = 0;
             this.productoBindingNavigator.Text = "bindingNavigator1";
             this.productoBindingNavigator.RefreshItems += new System.EventHandler(this.productoBindingNavigator_RefreshItems);
@@ -311,9 +313,9 @@
             // 
             this.fotoPictureBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.productoBindingSource, "Foto", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.fotoPictureBox.Location = new System.Drawing.Point(347, 45);
+            this.fotoPictureBox.Location = new System.Drawing.Point(347, 64);
             this.fotoPictureBox.Name = "fotoPictureBox";
-            this.fotoPictureBox.Size = new System.Drawing.Size(179, 118);
+            this.fotoPictureBox.Size = new System.Drawing.Size(218, 118);
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fotoPictureBox.TabIndex = 13;
             this.fotoPictureBox.TabStop = false;
@@ -321,9 +323,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(347, 172);
+            this.button1.Location = new System.Drawing.Point(347, 188);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
+            this.button1.Size = new System.Drawing.Size(92, 23);
             this.button1.TabIndex = 14;
             this.button1.Text = "Agregar Fotos";
             this.button1.UseVisualStyleBackColor = true;
@@ -331,9 +333,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(437, 172);
+            this.button2.Location = new System.Drawing.Point(469, 188);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 23);
+            this.button2.Size = new System.Drawing.Size(96, 23);
             this.button2.TabIndex = 15;
             this.button2.Text = "Eliminar Foto";
             this.button2.UseVisualStyleBackColor = true;
@@ -372,12 +374,32 @@
             this.openFileDialog2.FileName = "openFileDialog2";
             this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(419, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(146, 20);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(347, 38);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(66, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Buscar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // RegistroProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(568, 218);
+            this.ClientSize = new System.Drawing.Size(634, 262);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(categoriaidLabel);
             this.Controls.Add(this.categoriaidComboBox);
             this.Controls.Add(this.button2);
@@ -442,5 +464,7 @@
         private System.Windows.Forms.BindingSource listaCategoriasBindingSource;
         private System.Windows.Forms.ComboBox categoriaidComboBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button3;
     }
 }
